@@ -3,7 +3,8 @@ import "./App.css";
 function App() {
   return (
     <>
-      <p>OpenLights</p>
+      <h3>OpenLights</h3>
+      <p>Testing automated deployments</p>
     </>
   );
 }
