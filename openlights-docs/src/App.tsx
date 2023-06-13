@@ -9,7 +9,7 @@ import { theme } from "./theme";
 const Layout = () => (
   <Box key="content" width="1200px">
     <SiteHeader key="header" />
-    <Box style={{ overflow: "auto" }}>
+    <Box style={{ overflow: "auto", marginTop: 100 }}>
       <Outlet />
     </Box>
   </Box>
@@ -42,7 +42,7 @@ function App() {
           flexDirection={"row"}
           justifyContent={"center"}
           alignContent={"center"}
-          overflow={"hidden"}
+          overflow={"auto"}
         >
           <RouterProvider router={router} />
         </Box>

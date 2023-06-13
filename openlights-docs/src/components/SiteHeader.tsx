@@ -1,4 +1,4 @@
-import { Box, Button, Link, SvgIcon, Typography } from "@mui/material";
+import { Box, Button, Link, SvgIcon, Typography, styled } from "@mui/material";
 import { ReactNode } from "react";
 import { ReactComponent as InstagramLogo } from "../assets/instagram_logo.svg";
 import { ReactComponent as OpenLightsLogo } from "../assets/logo.svg";
@@ -45,20 +45,25 @@ const HorizontalList = ({
   </Box>
 );
 
+const HeaderContainer = styled(Box)`
+    min-width: 800px;
+    max-width: 1200px;
+    height: 100px;
+    width: 100%;
+    padding: 2;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    align-self: center;
+    position: absolute;
+    z-index: 1000;
+    background-color: white;
+`;
+
 export const SiteHeader = () => {
   return (
-    <Box
-      minWidth={"800px"}
-      maxWidth={"1200px"}
-      width={"100%"}
-      padding={2}
-      marginTop={4}
-      display={"flex"}
-      flexDirection={"row"}
-      alignItems={"center"}
-      justifyContent={"space-between"}
-      alignSelf={"center"}
-    >
+    <HeaderContainer>
       <Box key="Logo" display="flex" flexDirection={"row"} alignItems="center">
         <SvgIcon component={OpenLightsLogo} inheritViewBox fontSize="large" />
         <Typography fontSize={24}>OpenLights</Typography>
@@ -119,6 +124,6 @@ export const SiteHeader = () => {
           <SvgIcon component={InstagramLogo} inheritViewBox fontSize="medium" />
         </Button>
       </Box>
-    </Box>
+    </HeaderContainer>
   );
 };
