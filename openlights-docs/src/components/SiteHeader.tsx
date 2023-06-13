@@ -158,7 +158,7 @@ export const SiteHeader = () => {
           logo={InstagramLogo}
         />
         <ExternalLinkButton
-          href="https:/github.com/octosafe/openlights"
+          href="https://github.com/octosafe/openlights"
           logo={GithubLogo}
         />
       </Box>
