@@ -1,7 +1,53 @@
-import { Box, Button, Link, SvgIcon, Typography, styled } from "@mui/material";
+import {
+  Box,
+  IconButton,
+  Link,
+  SvgIcon,
+  Typography,
+  styled
+} from "@mui/material";
 import { ReactNode } from "react";
+import { ReactComponent as GithubLogo } from "../assets/github-mark.svg";
 import { ReactComponent as InstagramLogo } from "../assets/instagram_logo.svg";
 import { ReactComponent as OpenLightsLogo } from "../assets/logo.svg";
+
+const StyledGithubLogo = styled(GithubLogo)`
+  height: 30px;
+  width: 30px;
+`;
+
+const ExternalLinkButton = ({
+  logo,
+  href,
+}: {
+  logo: React.ElementType;
+  href: string;
+}) => (
+  <IconButton
+    href={href}
+    target="_blank"
+    style={{
+      padding: 0,
+      margin: "4px",
+      minWidth: "24px",
+      width: "24px",
+      height: "24px",
+    }}
+  >
+    <SvgIcon
+      component={logo}
+      inheritViewBox
+      fontSize="medium"
+      style={{
+        padding: 0,
+        margin: "4px",
+        width: "24px",
+        minWidth: "24px",
+        height: "24px",
+      }}
+    />
+  </IconButton>
+);
 
 const HorizontalList = ({
   items,
@@ -46,25 +92,33 @@ const HorizontalList = ({
 );
 
 const HeaderContainer = styled(Box)`
-    min-width: 800px;
-    max-width: 1200px;
-    height: 100px;
-    width: 100%;
-    padding: 2;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    align-self: center;
-    position: absolute;
-    z-index: 1000;
-    background-color: white;
+  min-width: 800px;
+  /* max-width: 1200px; */
+  height: 100px;
+  width: 100%;
+  padding: 16px 32px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  align-self: center;
+  position: absolute;
+  z-index: 1000;
+  background-color: white;
 `;
 
 export const SiteHeader = () => {
   return (
     <HeaderContainer>
-      <Box key="Logo" display="flex" flexDirection={"row"} alignItems="center">
+      <Box
+        key="Logo"
+        display="flex"
+        flexDirection={"row"}
+        alignItems="center"
+        component={Link}
+        href="/"
+        style={{textDecoration: "none", color: "inherit"}}
+      >
         <SvgIcon component={OpenLightsLogo} inheritViewBox fontSize="large" />
         <Typography fontSize={24}>OpenLights</Typography>
       </Box>
@@ -82,15 +136,7 @@ export const SiteHeader = () => {
             </Typography>,
             <Typography
               component={Link}
-              href="/designs"
-              fontSize={14}
-              style={{ textDecoration: "none", color: "inherit" }}
-            >
-              DESIGNS
-            </Typography>,
-            <Typography
-              component={Link}
-              href="/about"
+              href="#/about"
               fontSize={14}
               style={{ textDecoration: "none", color: "inherit" }}
             >
@@ -98,7 +144,23 @@ export const SiteHeader = () => {
             </Typography>,
             <Typography
               component={Link}
-              href="/credits"
+              href="#/designs"
+              fontSize={14}
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              DESIGNS
+            </Typography>,
+            <Typography
+              component={Link}
+              href="#/shop"
+              fontSize={14}
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              SHOP
+            </Typography>,
+            <Typography
+              component={Link}
+              href="#/credits"
               fontSize={14}
               style={{ textDecoration: "none", color: "inherit" }}
             >
@@ -106,7 +168,7 @@ export const SiteHeader = () => {
             </Typography>,
             <Typography
               component={Link}
-              href="/people"
+              href="#/people"
               fontSize={14}
               style={{ textDecoration: "none", color: "inherit" }}
             >
@@ -116,13 +178,14 @@ export const SiteHeader = () => {
         />
       </Box>
       <Box key="External">
-        <Button
-          LinkComponent={"a"}
+        <ExternalLinkButton
           href="https://www.instagram.com/openlightsart/"
-          target="_blank"
-        >
-          <SvgIcon component={InstagramLogo} inheritViewBox fontSize="medium" />
-        </Button>
+          logo={InstagramLogo}
+        />
+        <ExternalLinkButton
+          href="https:/github.com/octosafe/openlights"
+          logo={StyledGithubLogo}
+        />
       </Box>
     </HeaderContainer>
   );
