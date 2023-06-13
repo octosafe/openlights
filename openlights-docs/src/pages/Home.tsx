@@ -20,7 +20,7 @@ const homeImages = shuffle([
     link: "/designs/beacon",
   },
   {
-    img: "/images/peacecube/openlights_cube_1.jpeg",
+    img: "/images/peacecube/openlights_peacecube_1.jpeg",
     title: "Peace Cube",
     link: "/designs/peacecube",
   },

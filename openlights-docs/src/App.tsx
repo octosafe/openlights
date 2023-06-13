@@ -7,6 +7,9 @@ import { Home } from "./pages/Home";
 import { PageNotFound } from "./pages/PageNotFound";
 import { Shop } from "./pages/Shop";
 import { DesignBeacon } from "./pages/designs/Beacon";
+import { DesignMirrorCube } from "./pages/designs/MirrorCube";
+import { DesignPeaceCube } from "./pages/designs/PeaceCube";
+import { DesignSilhouette } from "./pages/designs/Silhouette";
 import { theme } from "./theme";
 
 const Layout = () => (
@@ -28,7 +31,12 @@ const router = createHashRouter(
         {
           path: "designs",
           element: <Designs />,
-          children: [{ path: "beacon", element: <DesignBeacon /> }],
+          children: [
+            { path: "beacon", element: <DesignBeacon /> },
+            { path: "mirrorcube", element: <DesignMirrorCube /> },
+            { path: "peacecube", element: <DesignPeaceCube /> },
+            { path: "silhouette", element: <DesignSilhouette /> },
+          ],
         },
         {
           path: "shop",
