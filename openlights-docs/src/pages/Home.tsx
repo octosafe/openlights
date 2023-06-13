@@ -72,11 +72,9 @@ export const Home = () => {
       textAlign={"center"}
     >
       <Typography fontSize={16}>
-        Welcome to the OpenLights
+        Welcome to the OpenLights Art Project
         <br />
-        You are viewing a page under construction
-        <br />
-        It is entirely possible that what you see here might change shortly
+        We are still setting up, it is entirely possible that what you see here might change shortly
       </Typography>
       <Box height="40px"></Box>
       <Typography>
@@ -84,7 +82,11 @@ export const Home = () => {
         learned to collaborate and improvise most effectively have prevailed."
       </Typography>
       <Typography fontStyle={"italic"}>- Charles Darwin</Typography>
-      <ImageList sx={{ width: 1000, height: 450 }} cols={3} rowHeight={350}>
+      <ImageList
+        sx={{ width: 1000 }}
+        cols={3}
+        rowHeight={350}
+      >
         {homeImages.map((item) => (
           <ImageListItem key={item.img}>
             <img
