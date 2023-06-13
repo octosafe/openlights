@@ -8,7 +8,7 @@ export const PageNotFound = () => {
         quote="It's the unknown that draws people."
         author="E.A. Bucchianeri"
       />
-      <Heading title="Not Found" subtitle="This route does not exist (yet)" />
+      <Heading title="Not Found" subtitle="This page does not exist (yet)" />
     </>
   );
 };
