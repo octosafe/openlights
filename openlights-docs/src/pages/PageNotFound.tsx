@@ -1,11 +1,14 @@
-import { Box, Typography } from "@mui/material";
+import { Heading } from "../components/Heading";
+import { QuoteBox } from "../components/QuoteBox";
 
 export const PageNotFound = () => {
   return (
-    <Box textAlign={"center"}>
-      <Typography fontSize={30}>This route does not exist (yet)</Typography>
-      <Typography>"It's the unknown that draws people."</Typography>
-      <Typography fontStyle={"italic"}>- E.A. Bucchianeri</Typography>
-    </Box>
+    <>
+      <QuoteBox
+        quote="It's the unknown that draws people."
+        author="E.A. Bucchianeri"
+      />
+      <Heading title="Not Found" subtitle="This route does not exist (yet)" />
+    </>
   );
 };
