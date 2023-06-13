@@ -4,17 +4,12 @@ import {
   Link,
   SvgIcon,
   Typography,
-  styled
+  styled,
 } from "@mui/material";
 import { ReactNode } from "react";
 import { ReactComponent as GithubLogo } from "../assets/github-mark.svg";
 import { ReactComponent as InstagramLogo } from "../assets/instagram_logo.svg";
 import { ReactComponent as OpenLightsLogo } from "../assets/logo.svg";
-
-const StyledGithubLogo = styled(GithubLogo)`
-  height: 30px;
-  width: 30px;
-`;
 
 const ExternalLinkButton = ({
   logo,
@@ -23,29 +18,8 @@ const ExternalLinkButton = ({
   logo: React.ElementType;
   href: string;
 }) => (
-  <IconButton
-    href={href}
-    target="_blank"
-    style={{
-      padding: 0,
-      margin: "4px",
-      minWidth: "24px",
-      width: "24px",
-      height: "24px",
-    }}
-  >
-    <SvgIcon
-      component={logo}
-      inheritViewBox
-      fontSize="medium"
-      style={{
-        padding: 0,
-        margin: "4px",
-        width: "24px",
-        minWidth: "24px",
-        height: "24px",
-      }}
-    />
+  <IconButton href={href} target="_blank">
+    <SvgIcon component={logo} inheritViewBox fontSize="medium" />
   </IconButton>
 );
 
@@ -105,6 +79,7 @@ const HeaderContainer = styled(Box)`
   position: absolute;
   z-index: 1000;
   background-color: white;
+  box-shadow: 0px 0px 4px 1px #cccccc;
 `;
 
 export const SiteHeader = () => {
@@ -117,7 +92,7 @@ export const SiteHeader = () => {
         alignItems="center"
         component={Link}
         href="/"
-        style={{textDecoration: "none", color: "inherit"}}
+        style={{ textDecoration: "none", color: "inherit" }}
       >
         <SvgIcon component={OpenLightsLogo} inheritViewBox fontSize="large" />
         <Typography fontSize={24}>OpenLights</Typography>
@@ -133,14 +108,6 @@ export const SiteHeader = () => {
               style={{ textDecoration: "none", color: "inherit" }}
             >
               HOME
-            </Typography>,
-            <Typography
-              component={Link}
-              href="#/about"
-              fontSize={14}
-              style={{ textDecoration: "none", color: "inherit" }}
-            >
-              ABOUT
             </Typography>,
             <Typography
               component={Link}
@@ -168,11 +135,19 @@ export const SiteHeader = () => {
             </Typography>,
             <Typography
               component={Link}
-              href="#/people"
+              href="#/about"
               fontSize={14}
               style={{ textDecoration: "none", color: "inherit" }}
             >
-              PEOPLE
+              ABOUT
+            </Typography>,
+            <Typography
+              component={Link}
+              href="#/help"
+              fontSize={14}
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              HELP
             </Typography>,
           ]}
         />
@@ -184,7 +159,7 @@ export const SiteHeader = () => {
         />
         <ExternalLinkButton
           href="https:/github.com/octosafe/openlights"
-          logo={StyledGithubLogo}
+          logo={GithubLogo}
         />
       </Box>
     </HeaderContainer>
