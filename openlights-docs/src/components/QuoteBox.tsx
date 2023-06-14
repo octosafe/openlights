@@ -7,7 +7,7 @@ export const QuoteBox = ({
   quote: string;
   author: string;
 }) => (
-  <Box textAlign={"center"} marginY={2}>
+  <Box textAlign={"right"} marginY={2}>
     <Typography>"{quote}"</Typography>
     <Typography fontStyle={"italic"}>- {author}</Typography>
   </Box>

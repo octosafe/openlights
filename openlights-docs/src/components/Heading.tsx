@@ -6,10 +6,9 @@ export const Heading = ({
   title: string;
   subtitle: string;
 }) => (
-  <Box textAlign={"left"}>
-    <Box borderBottom={2} width="100%">
-      <Typography fontSize={30}>{title}</Typography>
-    </Box>
-    <Typography>{subtitle}</Typography>
+  <Box textAlign={"left"} width={"100%"}>
+    <Typography fontSize={30}>{title}</Typography>
+    <Box width={"30%"} minWidth={300} borderBottom={5} borderColor={"#444444"} marginY={2}></Box>
+    <Typography marginY={2}>{subtitle}</Typography>
   </Box>
 );

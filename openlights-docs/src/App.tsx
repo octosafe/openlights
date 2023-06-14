@@ -13,9 +13,25 @@ import { DesignSilhouette } from "./pages/designs/Silhouette";
 import { theme } from "./theme";
 
 const Layout = () => (
-  <Box key="content" width="100%">
+  <Box
+    key="content"
+    width="100%"
+    alignItems="center"
+    display="flex"
+    flexDirection="column"
+  >
     <SiteHeader key="header" />
-    <Box style={{ overflow: "auto", marginTop: 100 }} padding="0px 32px">
+    <Box
+      style={{
+        overflow: "auto",
+        marginTop: 100,
+        maxWidth: 1200,
+        width: "100%",
+        display: "flex",
+        flexDirection: "column",
+      }}
+      padding="0px 32px"
+    >
       <Outlet />
     </Box>
   </Box>
@@ -58,6 +74,7 @@ function App() {
           key="content_wrapper"
           width="100vw"
           height="100vh"
+          minWidth="400px"
           display="flex"
           flexDirection={"row"}
           justifyContent={"center"}

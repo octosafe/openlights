@@ -53,7 +53,7 @@ export const Home = () => {
         subtitle="This is the OpenLights Art Project. We are still setting up, it is entirely possible that what you see here might change shortly."
       />
       <Box display="flex" width="100%" justifyContent={"center"}>
-        <ImageList sx={{ width: 1000 }} cols={3} rowHeight={350}>
+        <ImageList cols={3} rowHeight={350}>
           {homeImages.map((item) => (
             <ImageListItem
               key={item.img}
