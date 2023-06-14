@@ -22,7 +22,7 @@ type DesignItem = {
 
 const DesignCard = ({ design }: { design: DesignItem }) => {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ minWidth: 200, maxWidth: 345 }}>
       <CardMedia
         component="img"
         alt={design.title}
@@ -103,14 +103,14 @@ export const Designs = () => {
             title="Designs"
             subtitle="Here you can find the list of designs created as part of OpenLights"
           />
-          <Box sx={{ flexGrow: 1, padding: 2 }}>
+          <Box display="flex" width={"100%"} sx={{ flexGrow: 1, padding: 2 }}>
             <Grid
               container
               spacing={{ xs: 2, md: 3 }}
               columns={{ xs: 4, sm: 8, md: 12 }}
             >
               {designs.map((design, index) => (
-                <Grid xs={2} sm={4} md={4} key={index}>
+                <Grid xs={4} sm={4} md={4} key={index}>
                   <DesignCard design={design} />
                 </Grid>
               ))}

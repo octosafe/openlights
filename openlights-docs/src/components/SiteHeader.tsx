@@ -65,103 +65,84 @@ const HorizontalList = ({
   </Box>
 );
 
-const HeaderContainer = styled(Box)`
-  min-width: 800px;
-  /* max-width: 1200px; */
-  height: 100px;
+const HeaderWrapper = styled(Box)`
   width: 100%;
+  position: absolute;
+  z-index: 1000;
+  min-width: 800px;
+  height: 100px;
+  box-shadow: 0px 0px 4px 1px #cccccc;
+  background-color: white;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+`;
+
+const HeaderContainer = styled(Box)`
+  width: 100%;
+  max-width: 1200px;
   padding: 16px 32px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  align-self: center;
-  position: absolute;
-  z-index: 1000;
-  background-color: white;
-  box-shadow: 0px 0px 4px 1px #cccccc;
 `;
+
+const pages = [
+  { name: "Home", href: "/" },
+  { name: "About", href: "#/about" },
+  { name: "Designs", href: "#/designs" },
+  { name: "Shop", href: "#/shop" },
+  { name: "Credits", href: "#/credits" },
+  { name: "Help", href: "#/help" },
+];
 
 export const SiteHeader = () => {
   return (
-    <HeaderContainer>
-      <Box
-        key="Logo"
-        display="flex"
-        flexDirection={"row"}
-        alignItems="center"
-        component={Link}
-        href="/"
-        style={{ textDecoration: "none", color: "inherit" }}
-      >
-        <SvgIcon component={OpenLightsLogo} inheritViewBox fontSize="large" />
-        <Typography fontSize={24}>OpenLights</Typography>
-      </Box>
-      <Box key="Nav">
-        <HorizontalList
-          fontSize={14}
-          items={[
-            <Typography
-              component={Link}
-              href="/"
-              fontSize={14}
-              style={{ textDecoration: "none", color: "inherit" }}
-            >
-              HOME
-            </Typography>,
-            <Typography
-              component={Link}
-              href="#/designs"
-              fontSize={14}
-              style={{ textDecoration: "none", color: "inherit" }}
-            >
-              DESIGNS
-            </Typography>,
-            <Typography
-              component={Link}
-              href="#/shop"
-              fontSize={14}
-              style={{ textDecoration: "none", color: "inherit" }}
-            >
-              SHOP
-            </Typography>,
-            <Typography
-              component={Link}
-              href="#/credits"
-              fontSize={14}
-              style={{ textDecoration: "none", color: "inherit" }}
-            >
-              CREDITS
-            </Typography>,
-            <Typography
-              component={Link}
-              href="#/about"
-              fontSize={14}
-              style={{ textDecoration: "none", color: "inherit" }}
-            >
-              ABOUT
-            </Typography>,
-            <Typography
-              component={Link}
-              href="#/help"
-              fontSize={14}
-              style={{ textDecoration: "none", color: "inherit" }}
-            >
-              HELP
-            </Typography>,
-          ]}
-        />
-      </Box>
-      <Box key="External">
-        <ExternalLinkButton
-          href="https://www.instagram.com/openlightsart/"
-          logo={InstagramLogo}
-        />
-        <ExternalLinkButton
-          href="https://github.com/octosafe/openlights"
-          logo={GithubLogo}
-        />
-      </Box>
-    </HeaderContainer>
+    <HeaderWrapper>
+      <HeaderContainer>
+        <Box
+          key="Logo"
+          display="flex"
+          flexDirection={"row"}
+          alignItems="center"
+          component={Link}
+          href="/"
+          style={{ textDecoration: "none", color: "inherit" }}
+        >
+          <SvgIcon component={OpenLightsLogo} inheritViewBox fontSize="large" />
+          <Typography fontSize={24}>OpenLights</Typography>
+        </Box>
+        <Box key="Nav">
+          <HorizontalList
+            fontSize={14}
+            items={pages.map((page) => (
+              <Typography
+                component={Link}
+                href={page.href}
+                fontSize={14}
+                style={{
+                  textDecoration: "none",
+                  color: "inherit",
+                  textTransform: "uppercase",
+                }}
+              >
+                {page.name}
+              </Typography>
+            ))}
+          />
+        </Box>
+        <Box key="External" display="flex" flexDirection="row">
+          <ExternalLinkButton
+            href="https://www.instagram.com/openlightsart/"
+            logo={InstagramLogo}
+          />
+          <ExternalLinkButton
+            href="https://github.com/octosafe/openlights"
+            logo={GithubLogo}
+          />
+        </Box>
+      </HeaderContainer>
+    </HeaderWrapper>
   );
 };
