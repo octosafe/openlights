@@ -6,16 +6,19 @@ This repository contains the 3D Designs, Bill of Materials, Circuit Diagrams, Li
 
 ```
 openlights-docs     <-- this is the website deployed to openlights.art
-designs             <-- this is the stuff
+designs             <-- this is the important stuff
     \-- <design>    <-- the specific design, such as Beacon
         \-- 3d      <-- STLs and Fusion360 designs
         |-- bom     <-- spreadsheets with Bill of Materials
         |-- circuit <-- circuit diagrams, KiCad or hand-drawn
         |-- laser   <-- laser files, such as SVGs, Lightburn files, etc.
+firmware            <-- this contains a known good version of WLED (and other firmware)
+
 ```
 
 ## Links
 [Website](https://openlights.art)
+
 [Instagram](https://www.instagram.com/openlightsart/)
 
 ## Contributing
