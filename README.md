@@ -21,6 +21,11 @@ firmware            <-- this contains a known good version of WLED (and other fi
 
 [Instagram](https://www.instagram.com/openlightsart/)
 
+## External Links
+
+[WLED](https://kno.wled.ge/)
+
+[WLED Moon Modules Web Installer](https://wled-install.github.io/)
+
 ## Contributing
 At the moment, I'm still trying to piece together the structure of content. Contributions are welcome in the form of documentation, presentations, pictures, experiences, etc. You can get started right now with sharing pictures on Instagram with the tags #openlights #openlightsart and #openlights.art showing off your own OpenLights hardware!
-
