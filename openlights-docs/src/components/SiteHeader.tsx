@@ -2,7 +2,6 @@ import {
   Box,
   IconButton,
   Link,
-  SvgIcon,
   Typography,
   styled,
   useTheme as useMuiTheme,

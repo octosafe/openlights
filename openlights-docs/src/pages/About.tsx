@@ -1,4 +1,4 @@
-import { Box, Typography, Paper, Grid, Avatar } from "@mui/material";
+import { Box, Typography, Paper, Grid } from "@mui/material";
 import { Heading } from "../components/Heading";
 import { QuoteBox } from "../components/QuoteBox";
 
