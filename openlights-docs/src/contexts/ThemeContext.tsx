@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { ThemeProvider } from '@mui/material';
 import { theme, darkTheme } from '../theme';
