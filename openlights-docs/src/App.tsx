@@ -1,41 +1,51 @@
-import { Box, CssBaseline, ThemeProvider } from "@mui/material";
-import { Outlet, RouterProvider, createHashRouter } from "react-router-dom";
+import { Box, CssBaseline } from "@mui/material";
+import { Outlet, RouterProvider, createHashRouter, useLocation } from "react-router-dom";
 import "./App.css";
 import { SiteHeader } from "./components/SiteHeader";
 import { Designs } from "./pages/Designs";
 import { Home } from "./pages/Home";
 import { PageNotFound } from "./pages/PageNotFound";
 import { Shop } from "./pages/Shop";
+import { About } from "./pages/About";
 import { DesignBeacon } from "./pages/designs/Beacon";
 import { DesignMirrorCube } from "./pages/designs/MirrorCube";
 import { DesignPeaceCube } from "./pages/designs/PeaceCube";
 import { DesignSilhouette } from "./pages/designs/Silhouette";
-import { theme } from "./theme";
+import { CustomThemeProvider } from "./contexts/ThemeContext";
 
-const Layout = () => (
-  <Box
-    key="content"
-    width="100%"
-    alignItems="center"
-    display="flex"
-    flexDirection="column"
-  >
-    <SiteHeader key="header" />
+const Layout = () => {
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+
+  return (
     <Box
-      style={{
-        overflow: "auto",
-        marginTop: 100,
-        maxWidth: 1200,
-        width: "100%",
-        display: "flex",
-        flexDirection: "column",
-      }}
-      padding="0px 32px"
+      key="content"
+      width="100%"
+      alignItems="center"
+      display="flex"
+      flexDirection="column"
+      minHeight="100vh"
     >
-      <Outlet />
+      <SiteHeader key="header" />
+      <Box
+        className={isHomePage ? 'hide-scrollbar' : ''}
+        sx={{
+          overflow: "auto",
+          marginTop: '100px', // Fixed header height
+          maxWidth: 1200,
+          width: "100%",
+          display: "flex",
+          flexDirection: "column",
+          flexGrow: 1,
+          px: { xs: 2, sm: 3, md: 4 }, // Responsive padding
+          minHeight: 'calc(100vh - 100px)', // Ensure content fills viewport
+        }}
+      >
+        <Outlet />
+      </Box>
     </Box>
-  </Box>
-);
+  );
+};
 
 const router = createHashRouter(
   [
@@ -44,6 +54,7 @@ const router = createHashRouter(
       element: <Layout />,
       children: [
         { path: "", element: <Home /> },
+        { path: "about", element: <About /> },
         {
           path: "designs",
           element: <Designs />,
@@ -69,7 +80,7 @@ function App() {
   return (
     <>
       <CssBaseline />
-      <ThemeProvider theme={theme}>
+      <CustomThemeProvider>
         <Box
           key="content_wrapper"
           width="100vw"
@@ -83,7 +94,7 @@ function App() {
         >
           <RouterProvider router={router} />
         </Box>
-      </ThemeProvider>
+      </CustomThemeProvider>
     </>
   );
 }
