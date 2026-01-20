@@ -5,21 +5,25 @@ import {
   SvgIcon,
   Typography,
   styled,
+  useTheme as useMuiTheme,
 } from "@mui/material";
 import { ReactNode } from "react";
-import { ReactComponent as GithubLogo } from "../assets/github-mark.svg";
-import { ReactComponent as InstagramLogo } from "../assets/instagram_logo.svg";
-import { ReactComponent as OpenLightsLogo } from "../assets/logo.svg";
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
+import githubLogo from "../assets/github-mark.svg";
+import instagramLogo from "../assets/instagram_logo.svg";
+import openLightsLogo from "../assets/logo.svg";
+import { useTheme } from "../contexts/ThemeContext";
 
 const ExternalLinkButton = ({
   logo,
   href,
 }: {
-  logo: React.ElementType;
+  logo: string;
   href: string;
 }) => (
   <IconButton href={href} target="_blank">
-    <SvgIcon component={logo} inheritViewBox fontSize="medium" />
+    <img src={logo} alt="" style={{ width: 24, height: 24 }} />
   </IconButton>
 );
 
@@ -65,18 +69,23 @@ const HorizontalList = ({
   </Box>
 );
 
-const HeaderWrapper = styled(Box)`
-  width: 100%;
-  position: absolute;
-  z-index: 1000;
-  min-width: 800px;
-  height: 100px;
-  box-shadow: 0px 0px 4px 1px #cccccc;
-  background-color: white;
-  justify-content: center;
-  display: flex;
-  flex-direction: row;
-`;
+const HeaderWrapper = styled(Box)(({ theme }) => ({
+  width: '100%',
+  position: 'fixed',
+  top: 0,
+  zIndex: 1000,
+  minWidth: '800px',
+  height: '100px',
+  boxShadow: '0px 2px 8px rgba(0,0,0,0.15)',
+  backgroundColor: theme.palette.mode === 'dark'
+    ? 'rgba(31, 41, 55, 0.95)'
+    : 'rgba(255, 255, 255, 0.95)',
+  backdropFilter: 'blur(12px)',
+  justifyContent: 'center',
+  display: 'flex',
+  flexDirection: 'row',
+  borderBottom: `1px solid ${theme.palette.divider}`,
+}));
 
 const HeaderContainer = styled(Box)`
   width: 100%;
@@ -98,8 +107,11 @@ const pages = [
 ];
 
 export const SiteHeader = () => {
+  const muiTheme = useMuiTheme();
+  const { isDarkMode, toggleTheme } = useTheme();
+
   return (
-    <HeaderWrapper>
+    <HeaderWrapper theme={muiTheme}>
       <HeaderContainer>
         <Box
           key="Logo"
@@ -110,8 +122,8 @@ export const SiteHeader = () => {
           href="/"
           style={{ textDecoration: "none", color: "inherit" }}
         >
-          <SvgIcon component={OpenLightsLogo} inheritViewBox fontSize="large" />
-          <Typography fontSize={24}>OpenLights</Typography>
+          <img src={openLightsLogo} alt="OpenLights" style={{ width: 32, height: 32, marginRight: 8 }} />
+          <Typography fontSize={24} fontWeight={600}>OpenLights</Typography>
         </Box>
         <Box key="Nav">
           <HorizontalList
@@ -121,10 +133,14 @@ export const SiteHeader = () => {
                 component={Link}
                 href={page.href}
                 fontSize={14}
-                style={{
+                sx={{
                   textDecoration: "none",
                   color: "inherit",
                   textTransform: "uppercase",
+                  transition: "color 0.2s ease",
+                  "&:hover": {
+                    color: muiTheme.palette.primary.main,
+                  },
                 }}
               >
                 {page.name}
@@ -132,14 +148,17 @@ export const SiteHeader = () => {
             ))}
           />
         </Box>
-        <Box key="External" display="flex" flexDirection="row">
+        <Box key="External" display="flex" flexDirection="row" alignItems="center">
+          <IconButton onClick={toggleTheme} color="inherit" sx={{ mr: 1 }}>
+            {isDarkMode ? <Brightness7Icon /> : <Brightness4Icon />}
+          </IconButton>
           <ExternalLinkButton
             href="https://www.instagram.com/openlightsart/"
-            logo={InstagramLogo}
+            logo={instagramLogo}
           />
           <ExternalLinkButton
             href="https://github.com/octosafe/openlights"
-            logo={GithubLogo}
+            logo={githubLogo}
           />
         </Box>
       </HeaderContainer>

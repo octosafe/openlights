@@ -68,11 +68,15 @@ export const Home = () => {
               }}
             >
               <img
-                src={`${item.img}?w=250&h=250&fit=crop&auto=format`}
-                srcSet={`${item.img}?w=250&h=250&fit=crop&auto=format&dpr=2 2x`}
+                src={item.img}
                 alt={item.title}
                 loading="lazy"
-                style={{ height: "250px", content: "cover" }}
+                style={{
+                  height: "250px",
+                  width: "100%",
+                  objectFit: "cover",
+                  borderRadius: "8px"
+                }}
               />
             </ImageListItem>
           ))}
