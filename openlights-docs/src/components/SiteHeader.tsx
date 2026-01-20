@@ -5,6 +5,7 @@ import {
   Typography,
   styled,
   useTheme as useMuiTheme,
+  Theme,
 } from "@mui/material";
 import { ReactNode } from "react";
 import Brightness4Icon from '@mui/icons-material/Brightness4';
@@ -29,9 +30,11 @@ const ExternalLinkButton = ({
 const HorizontalList = ({
   items,
   fontSize,
+  theme,
 }: {
   items: ReactNode[];
   fontSize?: number;
+  theme: Theme;
 }) => (
   <Box
     display={"flex"}
@@ -45,10 +48,12 @@ const HorizontalList = ({
       <>
         {index > 0 && (
           <Box
-            key={`div_{item}`}
+            key={`div_${index}`}
             width={"1px"}
             height={"10px"}
-            border={"1px solid black"}
+            sx={{
+              border: `1px solid ${theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.3)' : 'rgba(0,0,0,0.3)'}`,
+            }}
           />
         )}
         <Box key={`li_{item}`}>
@@ -122,11 +127,20 @@ export const SiteHeader = () => {
           style={{ textDecoration: "none", color: "inherit" }}
         >
           <img src={openLightsLogo} alt="OpenLights" style={{ width: 32, height: 32, marginRight: 8 }} />
-          <Typography fontSize={24} fontWeight={600}>OpenLights</Typography>
+          <Typography
+            fontSize={24}
+            fontWeight={600}
+            sx={{
+              color: muiTheme.palette.mode === 'dark' ? 'common.white' : 'text.primary'
+            }}
+          >
+            OpenLights
+          </Typography>
         </Box>
         <Box key="Nav">
           <HorizontalList
             fontSize={14}
+            theme={muiTheme}
             items={pages.map((page) => (
               <Typography
                 component={Link}
@@ -134,7 +148,7 @@ export const SiteHeader = () => {
                 fontSize={14}
                 sx={{
                   textDecoration: "none",
-                  color: "inherit",
+                  color: muiTheme.palette.mode === 'dark' ? 'common.white' : 'text.primary',
                   textTransform: "uppercase",
                   transition: "color 0.2s ease",
                   "&:hover": {
